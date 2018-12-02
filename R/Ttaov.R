@@ -19,6 +19,7 @@
 
 Tt.aov <- function(vx, vtreat1,vtreat2)
 {
+    vx <- abs(vx)
     if(missing(vtreat2)){
         VarAov <- aov(vx~vtreat1)
     }
@@ -32,12 +33,14 @@ Tt.aov <- function(vx, vtreat1,vtreat2)
         stats <- aggregate(vx, by=list (Treatment=vtreat1),
                            FUN=function(x) c(mean=mean(x, na.rm=T),
                                              sd=sd(x,na.rm=T), n=length(x)))
+        stats<-do.call(data.frame,stats)
     }
     else{
         p <- VarAnova$Pr[3]
         stats <- aggregate(vx, by=list (Treatment=vtreat1, Treatment2=vtreat2),
                            FUN=function(x) c(mean=mean(x, na.rm=T),
                                              sd=sd(x, na.rm=T), n=length(x)))
+        stats<-do.call(data.frame,stats)
     }
     if(p<0.05) {Tuk <- TukeyHSD(VarAov)}
     else{Tuk <- 'No significant differences'}
