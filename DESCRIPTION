@@ -1,9 +1,10 @@
 Package: kgv
-Title: What the Package Does (one line, title case)
+Title: Statistical tools for basic statistics used in evironmental geo-sciences
 Version: 0.0.0.9000
-Authors@R: person("First", "Last", email = "first.last@example.com", role = c("aut", "cre"))
-Description: What the package does (one paragraph).
+Authors@R: person("Manuel", "Teodoro", email = "teoten@gmail.com", role = c("aut", "cre"))
+Description: The first version of this package performs ANOVA in a single function, based on basic R functions, and returns a list of objects that can be easily used for the statistical analysis and plot.
 Depends: R (>= 3.3.3)
 License: What license is it under?
 Encoding: UTF-8
 LazyData: true
+RoxygenNote: 6.1.1

@@ -1,0 +1,34 @@
+# The following function performs 1 or 2 way anova. It returns in format of list, the objects
+# anova : Which contains the details of the analysis
+# stats : A data frame containing mean, sd and size of sample (n)
+# p : value of p from anova, for a quick answer
+# Tukey : If p>0.05, tukeyHSD is performed
+# The results of this functions can be used for the later function for bar graphics with standard error lines
+Tt.aov <- function(vx, vtreat1,vtreat2)
+# vtreat contains the independent variable(s), or treatment(s)
+# vx contains the dependent variable
+{
+    if(missing(vtreat2)){
+        VarAov <- aov(vx~vtreat1)
+    }
+    else{
+        VarAov <- aov(vx~vtreat1*vtreat2)
+    }
+    
+    VarAnova <- anova(VarAov)
+    if(missing(vtreat2)){
+        p <- VarAnova$Pr[1]
+        stats <- aggregate(vx, by=list (Treatment=vtreat1),
+                           FUN=function(x) c(mean=mean(x, na.rm=T),
+                                             sd=sd(x,na.rm=T), n=length(x)))
+    }
+    else{
+        p <- VarAnova$Pr[3]
+        stats <- aggregate(vx, by=list (Treatment=vtreat1, Treatment2=vtreat2),
+                           FUN=function(x) c(mean=mean(x, na.rm=T),
+                                             sd=sd(x, na.rm=T), n=length(x)))
+    }
+    if(p<0.05) {Tuk <- TukeyHSD(VarAov)}
+    else{Tuk <- 'No significant differences'}
+    aov.output <- list(anova=VarAnova,stats=stats,p=p, Tukey=Tuk)
+    }
