@@ -13,7 +13,7 @@
 #' @export
 #' @examples
 #' Tt.spectra(spectrum$Energy, spectrum$Counts,elements.list=c('Pb','Zn','P'), y.lim=c(0,4000), x.lim=c(0,11))
-Tt.Spectra <- function(energy, counts, elements.list, y.lim=c(0,max(counts)),x.lim=c(0,max(energy)))
+Tt.Spectra <- function(energy, counts, elements.list, y.lim=c(0,max(counts, na.rm=T)),x.lim=c(0,max(energy, na.rm=T)))
 {
     data(elements)    
     plot(energy,counts,type='l', ylim=y.lim,xlim=x.lim, xlab='Energy (keV)',ylab='Counts', frame.plot=F)
