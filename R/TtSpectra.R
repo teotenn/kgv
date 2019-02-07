@@ -22,8 +22,8 @@ Tt.Spectra <- function(energy, counts, elements.list, y.lim=c(0,max(counts, na.r
         eds <- elements[which(elements$Symbol == element),24]
         eds2 <- elements[which(elements$Symbol == element),25]
         energy <- format(round(energy, 2), nsmall = 2)
-        eds <- format(round(eds, 2), nsmall = 2)
-        eds2 <- format(round(eds2, 2), nsmall = 2)
+        eds <- as.numeric(format(round(eds, 2), nsmall = 2))
+        eds2 <- as.numeric(format(round(eds2, 2), nsmall = 2))
         energy <- as.numeric(energy)
         xy <- data.frame(energy=energy,counts=counts)
         xy.eds <- xy[xy$energy==eds,]
