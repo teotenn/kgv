@@ -4,8 +4,8 @@
 \alias{Tt.Spectra}
 \title{Plot spectra for EDS analysis}
 \usage{
-Tt.Spectra(energy, counts, elements.list, y.lim = c(0, max(counts)),
-  x.lim = c(0, max(energy)))
+Tt.Spectra(energy, counts, elements.list, y.lim = c(0, max(counts, na.rm
+  = T)), x.lim = c(0, max(energy, na.rm = T)))
 }
 \arguments{
 \item{energy}{vector containing the values for the x axe. Typically in KeV for EDS analysis}
@@ -25,7 +25,9 @@ spectra plot
 The function uses basic R plot for plotting spectra. However, if elements.list is provided, it will provide labels for the elements, based on the energy (KeV) table of the elements for EDS analysis.
 }
 \examples{
-Tt.spectra(spectrum$Energy, spectrum$Counts,elements.list=c('Pb','Zn','P'), y.lim=c(0,4000), x.lim=c(0,11))
+Tt.spectra(spectrum$Energy, spectrum$Counts,elements.list=c('Pb','Zn','P'), y.lim=c(0,4000), x.lim=c(0,11)) # Simple plot with personilised limits
+Tt.spectra(spectrum$Energy, spectrum$Counts,elements.list=c('Ca')) # When there is overlap, as Ca and Sb, is best to add second element manually
+text(3.5, 500, 'Prueba', cex = 0.8)
 }
 \keyword{EDS}
 \keyword{spectra}

@@ -12,7 +12,9 @@
 #' @keywords spectra EDS
 #' @export
 #' @examples
-#' Tt.spectra(spectrum$Energy, spectrum$Counts,elements.list=c('Pb','Zn','P'), y.lim=c(0,4000), x.lim=c(0,11))
+#' Tt.spectra(spectrum$Energy, spectrum$Counts,elements.list=c('Pb','Zn','P'), y.lim=c(0,4000), x.lim=c(0,11)) # Simple plot with personilised limits
+#' Tt.spectra(spectrum$Energy, spectrum$Counts,elements.list=c('Ca')) # When there is overlap, as Ca and Sb, is best to add second element manually
+#' text(3.5, 500, 'Prueba', cex = 0.8)
 Tt.Spectra <- function(energy, counts, elements.list, y.lim=c(0,max(counts, na.rm=T)),x.lim=c(0,max(energy, na.rm=T)))
 {
     data(elements)    
