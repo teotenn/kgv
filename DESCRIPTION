@@ -1,10 +1,10 @@
 Package: kgv
 Title: Statistical tools for basic statistics used in evironmental geo-sciences
-Version: 0.0.0.9000
+Version: 0.1.0.1
 Authors@R: person("Manuel", "Teodoro", email = "teoten@gmail.com", role = c("aut", "cre"))
-Description: The first version of this package performs ANOVA in a single function, based on basic R functions, and returns a list of objects that can be easily used for the statistical analysis and plot.
+Description: This package performs basic statistic and chemical calculations for regular research in environmental sciences. Version 1.0 contains functions for estimation of ANOVA (Tt.aov) and molarity (Tt.mol) in a simple way, as well as graphic and table outputs for publications.
 Depends: R (>= 3.3.3)
-License: What license is it under?
+License: GPL (>= 2)
 Encoding: UTF-8
 LazyData: true
 RoxygenNote: 6.1.1

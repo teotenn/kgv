@@ -23,9 +23,9 @@ A chemical formula is provided in a specific format in order to calculate the we
 }
 \examples{
 Tt.mol(c('Ca','Cl'),c(1,2),molarity=0.1,details=F) # Weight (g/L) of calcium chloride to create 1L of solution at 0.1M
-elements <- c('Ca','N','O') # Elements in Calcium nitrate
+formula <- c('Ca','N','O') # Elements in Calcium nitrate
 molecules <- c(1,2,6) # Molecules of each elements in formula (Ca(NO3)2)
-Tt.mol(elements,molecules)
+Tt.mol(formula,molecules)
 }
 \keyword{elements}
 \keyword{molar-weight}

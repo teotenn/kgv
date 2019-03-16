@@ -16,8 +16,8 @@ Tt.table <- function(frames.list,row.list,col.list,decimals=2,separator="\u00B1"
     for (i in frames.list)
     {
         i <- as.data.frame(i)
-        mean <- round(i$x.mean, decimals)
-        sd <- round(i$x.sd,decimals)
+        mean <- round(i$Mean, decimals)
+        sd <- round(i$SD,decimals)
         variable <- paste(as.character(mean),as.character(sd),sep=separator)
         dat <- rbind(variable)
         data <- rbind(data,dat)
