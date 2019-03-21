@@ -1,0 +1,14 @@
+#+STARTUP: content
+#NOTES-*- mode: org -*-
+
+* Tt.table
+For now works only for 1-way anova.
+
+** Working on a 2-way anova output
+
+** Working on a dinamism to choose either column or row format
+
+* Tt.mol
+Calculates only gram per liter
+
+** TODO Add calculation for molarity
