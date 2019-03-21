@@ -14,8 +14,12 @@
 #' @keywords anova ggplot barplot
 #' @export
 #' @examples
-#' plot <- Tt.ggBarplot(data$stats) # loading the plot directly from stats object
-#' plot + labs(title="Graphic Title", subtitle='Subtitle', x='labels in X', y='labels in Y') + scale_fill_brewer(palette=3, name='Treatments') # ggplot plotting
+#' Zn <- Tt.aov(compost$Pb,compost$Treatment,compost$Plant) # 2-way anova
+#' plot <- Tt.barplot(Zn$stats, treat2=T)
+#' plot + labs(title="Zn in plant tissue", x='Species', y='mg/Kg')+
+#' scale_fill_brewer(palette=3)+
+#' guides(fill=guide_legend(title='Treatment'))
+
 Tt.barplot <- function(aov.output, treat2=FALSE)
 {
     require(ggplot2)

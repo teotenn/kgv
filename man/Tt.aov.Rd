@@ -19,11 +19,20 @@ aov.output a list with the following objects
 \item anova : Which contains the details of the analysis
 \item stats : mean, sd and size of sample (n)
 \item p : value(s) of p from anova, for a quick answer
-\item Tukey : If p>p.lim, TukeyHSD is performed. In the 2-ways anova, Tukey test will be perform for the interaction between treatments, as well as per-treatment.
+\item Tukey.interaction : If p>p.lim, TukeyHSD is performed. In the 2-ways anova, Tukey test will be perform for the interaction between treatments, as well as per-treatment, being 'Tukey.treatment1' and 'Tukey.treatment2' the results in the list.
 }
 }
 \description{
 Performs the analysis of variance using the functions aov and anova. Additionally, creates a table with mean values, standard deviation and size of sample per treatment. If p>0.05, a Tukey test is also performed.
+}
+\examples{
+data('compost')
+anova.Pb <- Tt.aov(compost$Pb, compost$Treatment, p.lim=0.001) # 1-way anova
+anova.Pb
+
+2anova.Zn <- Tt.aov(compost$Pb,compost$Treatment,compost$Plant) # 2-way anova
+2anova.Zn$anova # Results from anova
+2anova.Zn$stats # Mean, SD and n values
 }
 \keyword{TukeyHSD}
 \keyword{anova}

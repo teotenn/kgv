@@ -11,12 +11,19 @@
 #' \item anova : Which contains the details of the analysis
 #' \item stats : mean, sd and size of sample (n)
 #' \item p : value(s) of p from anova, for a quick answer
-#' \item Tukey : If p>p.lim, TukeyHSD is performed. In the 2-ways anova, Tukey test will be perform for the interaction between treatments, as well as per-treatment.
+#' \item Tukey.interaction : If p>p.lim, TukeyHSD is performed. In the 2-ways anova, Tukey test will be perform for the interaction between treatments, as well as per-treatment, being 'Tukey.treatment1' and 'Tukey.treatment2' the results in the list.
 #' }
 #'
 #' @keywords anova TukeyHSD
 #' @export
-#' @examples 
+#' @examples
+#' data('compost')
+#' Pb <- Tt.aov(compost$Pb, compost$Treatment, p.lim=0.001) # 1-way anova
+#' Pb
+#'
+#' Zn <- Tt.aov(compost$Pb,compost$Treatment,compost$Plant) # 2-way anova
+#' Zn$anova # Results from anova
+#' Zn$stats # Mean, SD and n values
 
 Tt.aov <- function(vx, vtreat1,vtreat2=NULL,p.lim=0.05)
 {
