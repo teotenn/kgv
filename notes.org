@@ -1,14 +1,36 @@
 #+STARTUP: content
 #NOTES-*- mode: org -*-
 
+* TODO Add errors to all the functions
+
+** TODO Tt.aov
+
+** TODO Tt.barplot
+
+** TODO Tt.mol
+
+** DONE Tt.read.abs
+
+** TODO Tt.spectra
+
+** TODO Tt.table
+
 * Tt.table
-For now works only for 1-way anova.
 
-** Working on a 2-way anova output
+** TODO FIX >> Otherwise, make sure to name "x.mean" and "x.sd" your columns with mean and standard deviation values, respectively <<
+** For now works only for 1-way anova.
+*** TODO Working on a 2-way anova output
 
-** Working on a dinamism to choose either column or row format
-
+** TODO Working on a dinamism to choose either column or row format
+** TODO Add examples
 * Tt.mol
-Calculates only gram per liter
 
-** TODO Add calculation for molarity
+** For now Calculates only gram per liter
+
+*** TODO Add calculation for molarity
+
+* Tt.read.abs
+
+** TODO Add examples
+
+*** Load data

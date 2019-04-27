@@ -27,12 +27,12 @@ Performs the analysis of variance using the functions aov and anova. Additionall
 }
 \examples{
 data('compost')
-anova.Pb <- Tt.aov(compost$Pb, compost$Treatment, p.lim=0.001) # 1-way anova
-anova.Pb
+Pb <- Tt.aov(compost$Pb, compost$Treatment, p.lim=0.001) # 1-way anova
+Pb
 
-2anova.Zn <- Tt.aov(compost$Pb,compost$Treatment,compost$Plant) # 2-way anova
-2anova.Zn$anova # Results from anova
-2anova.Zn$stats # Mean, SD and n values
+Zn <- Tt.aov(compost$Pb,compost$Treatment,compost$Plant) # 2-way anova
+Zn$anova # Results from anova
+Zn$stats # Mean, SD and n values
 }
 \keyword{TukeyHSD}
 \keyword{anova}

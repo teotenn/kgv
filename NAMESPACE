@@ -3,5 +3,6 @@
 export(Tt.aov)
 export(Tt.barplot)
 export(Tt.mol)
+export(Tt.read.abs)
 export(Tt.spectra)
 export(Tt.table)
