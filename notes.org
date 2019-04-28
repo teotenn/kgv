@@ -29,6 +29,8 @@
 
 *** TODO Add calculation for molarity
 
+** TODO Make the function to calculate several formulas instead of only 1
+
 * Tt.read.abs
 
 ** TODO Add examples

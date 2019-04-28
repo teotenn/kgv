@@ -46,14 +46,10 @@ Tt.read.abs <- function(model.concentrations, model.absorbance, predict=NULL, sh
     if(missing(predict)){
         predicted.concentrations='MESSAGE: You can enter absorbance directly as a vector to predict concentrations'
     }
-    else if(is.vector(predict))
+    else
         {
             predicted.concentrations <- (predict*terms)+intercept
             predicted.concentrations
-        }
-        else
-        {
-            stop("ERROR: Absorbance to predict values must be vector")
         }
     lista <- list(model=resumen,Pr=Pr, R.sq=R.sq, formula=formula,predicted.concentrations=predicted.concentrations)
 }
