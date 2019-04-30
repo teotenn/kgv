@@ -36,3 +36,6 @@
 ** TODO Add examples
 
 *** Load data
+* Tt.barplot
+** TODO Change SE lines for more interactive style, such as SD (or self chosen lines)
+** TODO Improve documentation
