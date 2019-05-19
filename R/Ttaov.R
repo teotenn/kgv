@@ -28,7 +28,7 @@
 Tt.aov <- function(vx, vtreat1,vtreat2=NULL,p.lim=0.05)
 {
     vx <- abs(vx)
-    treatment1 <- paste(deparse(substitute(vtreat1)))
+    treatment1 = paste(deparse(substitute(vtreat1)))
     treatment2 = paste(deparse(substitute(vtreat2)))           
     if(missing(vtreat2))
     { 

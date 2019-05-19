@@ -62,7 +62,10 @@ Tt.ppm <- function(solid,solution,concentration,mol=NULL,solid.u='g',solution.u=
                            'g'=concentration.g,
                            'mg'=concentration.g*1000,
                            'ug'=concentration.g*1000000,
-                           'Kg'=concentration.g/1000)
+                           'Kg'=concentration.g/1000,
+                           'M'=concentration/mol,
+                           'mM'=(concentration/mol)*1000,
+                           'uM'=(concentration/mol)*1000000)
     ## Concentration of sample in g/L to:
     proportion.g=switch(result.units[["sample"]],
                         'g'=proportion,

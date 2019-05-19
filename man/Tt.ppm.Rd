@@ -4,8 +4,8 @@
 \alias{Tt.ppm}
 \title{Calculation of ppm or ppb of a solid}
 \usage{
-Tt.ppm(solid, solution, concentration, mol = NULL, units = list(solid =
-  "g", solution = "ml", concentration = "mg"),
+Tt.ppm(solid, solution, concentration, mol = NULL, solid.u = "g",
+  solution.u = "ml", concentration.u = "mg",
   result.units = list(element = "mg", sample = "Kg"))
 }
 \arguments{
@@ -17,9 +17,13 @@ Tt.ppm(solid, solution, concentration, mol = NULL, units = list(solid =
 
 \item{mol}{if some units are expressed as mol, molar weght should be specified}
 
-\item{units}{a list containing units of the solid, solution and concentration. See details}
+\item{solid.u}{units in which the solid is expressed ("g", "mg", "ug", "Kg")}
 
-\item{result.units}{mass units of element per mass units of sample}
+\item{solution.u}{units in which the solution is expressed ("l", "ml", "ul")}
+
+\item{concentration.u}{units of mass per Liter, in which the concentratoin is expressed ("g", "mg", "ug", "Kg", "M", "mM", "uM")}
+
+\item{result.units}{mass units of element per mass units of sample. See details}
 }
 \value{
 returns the proportion of element contained in a solid, expressed in terms specified under "result.units"
@@ -28,20 +32,23 @@ returns the proportion of element contained in a solid, expressed in terms speci
 The function calculates proportion of element contained in a solid, express as mass units of element per mass units of sample (g, ug, mg, Kg), after being processed through a solution, particularly useful after reading absorbance AA, ICP, etc.
 }
 \details{
-explain concentration
+Units of mass can be expressed as proportions of grams ('ug', 'mg', 'g', 'Kg') or mol ('M', 'mM', 'uM'). Units of volume as proportions of liter ('l','ml','ul'). This apply for both parameters, units ("solid.u", "solution.u" and "concentration.u") and "result.units" (units to express the results).
 
-explain units
+"result.units" is of class lists. If only one unit is changed, all the other parameters must be enter again as part of the list
+
+Make sure that "concentration" is given as mass unit per liter. The function can addapt mass units, but is not addapted to change liter.
 }
 \examples{
+# Proline in plants
 # 0.1014g of plant were processed in 7.5ml of water
 # The laboratory results give 13.009 uM/L proline (molar weight 75.066)
 # We want to express the results as mg of proline per Kg of plant
-Tt.ppm(solid=0.1014,solution=7.5,concentration=13.009,mol=75.066,units=list(solid='g',solution='ml',concentration='uM'), result.units=list(element='mg',sample='Kg'))
+Tt.ppm(solid=0.1014,solution=7.5,concentration=13.009,mol=75.066,solid.u='g',solution.u='ml',concentration.u='uM', result.units=list(element='ug',sample='g'))
 
 # Soil was digested in aqua regia, and diluted at 25ml for ICP
-soil <- c(0.266,0.271,0.277,0.243,0.257) # weight of samples
-As <- c(0.054968685,0.056348685,0.090648685,0.057058685,0.070963685) # results from ICP
-Pb <- c(0.837786373333334,0.916599706666667,0.886459706666667,0.86488304,0.981849706666667)
+soil <- c(0.266,0.271,0.277,0.243,0.257) # weight of samples of soil for digestion
+As <- c(0.054968685,0.056348685,0.090648685,0.057058685,0.070963685) # results from ICP for As
+Pb <- c(0.837786373333334,0.916599706666667,0.886459706666667,0.86488304,0.981849706666667) # ICP Pb
 icp <- data.frame(As,Pb)
 Tt.ppm(soil,25,icp)
 }

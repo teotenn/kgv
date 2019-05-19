@@ -3,8 +3,8 @@
 
 * TODO Add errors to all the functions
 
-** TODO Tt.aov
-
+** DONE Tt.aov
+No errors needed, as the natural R solve any mistake
 ** TODO Tt.barplot
 
 ** TODO Tt.mol
@@ -36,6 +36,12 @@
 ** TODO Add examples
 
 *** Load data
+
+** TODO Fix bug of plots
 * Tt.barplot
 ** TODO Change SE lines for more interactive style, such as SD (or self chosen lines)
 ** TODO Improve documentation
+
+* Tt.ppm 
+
+** TODO Check that molarity is properly converted
