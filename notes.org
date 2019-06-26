@@ -15,6 +15,10 @@ No errors needed, as the natural R solve any mistake
 
 ** TODO Tt.table
 
+* Tt.aov
+
+** TODO BUG: If treatments are sorted first as factors, Tukey labels will be wrong
+
 * Tt.table
 
 ** TODO FIX >> Otherwise, make sure to name "x.mean" and "x.sd" your columns with mean and standard deviation values, respectively <<
@@ -42,6 +46,3 @@ No errors needed, as the natural R solve any mistake
 ** TODO Change SE lines for more interactive style, such as SD (or self chosen lines)
 ** TODO Improve documentation
 
-* Tt.ppm 
-
-** TODO Check that molarity is properly converted
