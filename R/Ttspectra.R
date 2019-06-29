@@ -45,6 +45,7 @@ Tt.spectra <- function(energy, counts, elements.list=NULL, lab.size=1,
     }
     data(elements) # loads chemical info
     xy.elements <- data.frame()
+    xy.elements2 <- data.frame()
     for (element in elements.list)
     {
         eds <- elements[which(elements$Symbol == element),24]  # extracts eds coords
@@ -66,6 +67,9 @@ Tt.spectra <- function(energy, counts, elements.list=NULL, lab.size=1,
             xy.labs <- data.frame(x=eds,y=xy.eds$counts[1]+200,
                                   element=element)
             xy.elements <- rbind(xy.elements,xy.labs)
+            xy.labs2 <- data.frame(x=eds2,y=xy.eds2$counts[1]+200,
+                                  element=element)
+            xy.elements2 <- rbind(xy.elements2,xy.labs2)
         }
     }
     if (as.ggplot==T && missing(elements.list)){spectra}
@@ -74,6 +78,10 @@ Tt.spectra <- function(energy, counts, elements.list=NULL, lab.size=1,
                               aes(x=x,y=y,label=element),
                               size=lab.size,
                               position=position_jitter(width=0))
-        spectra+gg.labs
+        gg.labs2 <- geom_label(data=xy.elements2,
+                              aes(x=x,y=y,label=element),
+                              size=lab.size,
+                              position=position_jitter(width=0))
+        spectra+gg.labs+gg.labs2
     }
 }
