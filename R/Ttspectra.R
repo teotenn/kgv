@@ -18,7 +18,7 @@
 #' Tt.spectra(spectrum$Energy, spectrum$Counts,elements.list=c('Ca'),as.ggplot=F) # When there is overlap, as Ca and Sb, is best to add second element manually
 #' text(3.5, 500, 'Prueba', cex = 0.8)
 #' Tt.spectra(spectrum$Energy, spectrum$Counts,elements.list=c('Ca')) # However this has been fixed using 'ggplot2'
-Tt.spectra2 <- function(energy, counts, elements.list=NULL, lab.size=1,
+Tt.spectra <- function(energy, counts, elements.list=NULL, lab.size=1,
                        y.lim=c(0,max(counts, na.rm=T)),
                        x.lim=c(0,max(energy, na.rm=T)),
                        as.ggplot=TRUE)
