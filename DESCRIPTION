@@ -3,7 +3,8 @@ Title: Statistical tools for basic analysis used in evironmental geo-sciences
 Version: 0.1.0.3
 Authors@R: person("Manuel", "Teodoro", email = "teoten@gmail.com", role = c("aut", "cre"))
 Description: This package performs basic statistic and chemical calculations for regular research in environmental sciences. Version 1.0 contains functions for estimation of ANOVA (Tt.aov) and molarity (Tt.mol) in a simple way, as well as graphic and table outputs for publications.
-Depends: R (>= 3.3.3)
+Depends: R (>= 3.3.3), ggplot2
+Suggests: knitr, scales, multcompView
 License: GPL (>= 2)
 Encoding: UTF-8
 LazyData: true

@@ -4,12 +4,14 @@
 \alias{Tt.aov}
 \title{Direct estimation of 1 or 2 way anova}
 \usage{
-Tt.aov(vx, vtreat1, vtreat2 = NULL, p.lim = 0.05)
+Tt.aov(vx, vtreat1, vtreat2 = NULL, p.lim = 0.05, Tuk.labs = TRUE)
 }
 \arguments{
 \item{vx}{dependent variable}
 
 \item{p.lim}{p-value for the limit of ANOVA to perform Tukey test}
+
+\item{Tuk.labs}{If TRUE, it will print the differences by TukeyHSD by different letters (requires package 'multcompView')}
 
 \item{vtreat}{independent variable(s). If vtreat2 exists, the function will perform a 2-way anova}
 }
@@ -17,7 +19,7 @@ Tt.aov(vx, vtreat1, vtreat2 = NULL, p.lim = 0.05)
 aov.output a list with the following objects
 \enumerate{
 \item anova : Which contains the details of the analysis
-\item stats : mean, sd and size of sample (n)
+\item stats : mean, sd, size of sample (n) and, if requested, Tukey HSD differences
 \item p : value(s) of p from anova, for a quick answer
 \item Tukey.interaction : If p>p.lim, TukeyHSD is performed. In the 2-ways anova, Tukey test will be perform for the interaction between treatments, as well as per-treatment, being 'Tukey.treatment1' and 'Tukey.treatment2' the results in the list.
 }
