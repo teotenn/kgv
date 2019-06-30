@@ -62,6 +62,7 @@ Tt.aov <- function(vx, vtreat1,vtreat2=NULL,p.lim=0.05, Tuk.labs=TRUE)
                            FUN=function(x) c(mean=mean(x, na.rm=T),
                                              sd=sd(x,na.rm=T), n=length(x)))
         stats<-do.call(data.frame,stats)
+        stats$x.se <- stats$SD/sqrt(stats$n)
         if (Tuk.int != 'No significant differences' && Tuk.labs==TRUE){
             stats <- merge(stats, Tuk.labels, by.x="Treats",
                          by.y="treatment1")
@@ -96,6 +97,7 @@ Tt.aov <- function(vx, vtreat1,vtreat2=NULL,p.lim=0.05, Tuk.labs=TRUE)
                            FUN=function(x) c(mean=mean(x, na.rm=T),
                                              sd=sd(x, na.rm=T), n=length(x)))
         stats<-do.call(data.frame,stats)
+        stats$x.se <- stats$SD/sqrt(stats$n)
         if (Tuk.int != 'No significant differences for the interaction of treatments'
             && Tuk.labs==TRUE){
             stats <- merge(stats, Tuk.labels, by.x=c("Treats1","Treats2"),

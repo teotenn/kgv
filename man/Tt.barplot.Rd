@@ -4,22 +4,25 @@
 \alias{Tt.barplot}
 \title{Bar chart with standard error lines using ggplot}
 \usage{
-Tt.barplot(aov.output, treat2 = FALSE)
+Tt.barplot(aov.output, T1, T2 = NULL, e.lines = "SD", dif = NULL,
+  dif.h = 0.5)
 }
 \arguments{
-\item{aov.output}{is a data frame containing the statistics information with the following data. Column names must match with the described below:
-\describe{
-\item{Treatment(s)}{The vector with the independent variables. Should be stored in the first columns of the data frame (1 or 2). No name matching is necessary.}
-\item{Mean}{Vector with mean values}
-\item{SD}{vector with standard deviation}
-\item{n}{vector with the sample sizes}
-}
-The object \emph{stats} obtained from the function \code{Tt.aov()} can be used directly, as it has the specified format.}
+\item{aov.output}{is a data frame containing the statistics information with the following data: mean values, treatments, error lines, and if desired, letters representing statistical difference.
+The object \emph{stats} obtained from the function \code{Tt.aov()} can be used directly.}
 
-\item{treat2=FALSE}{plots 1-way anova. If a second independent variable exists, change to TRUE}
+\item{T1}{name of the column containing the treatments}
+
+\item{T2}{name of the column containing the treatments for 2-factors plot (optional)}
+
+\item{e.lines}{name of the column containing the data of the error lines to be plotted}
+
+\item{dif}{name of the column with the letters representing statistical differences}
+
+\item{dif.h}{distance from the uper error line to plot the \code{dif} letters}
 }
 \value{
-gBarPlo An object for ggplot graphics
+An object for ggplot graphics
 }
 \description{
 Bar chart with standard error lines using ggplot
