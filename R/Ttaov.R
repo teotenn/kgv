@@ -27,7 +27,7 @@
 #' Zn$stats # Mean, SD and n values
 
 Tt.aov <- function(vx, vtreat1,vtreat2=NULL,p.lim=0.05, Tuk.labs=TRUE)
-{    
+{
     vx <- abs(vx)
     treatment1 = paste(deparse(substitute(vtreat1)))
     treatment2 = paste(deparse(substitute(vtreat2)))           
@@ -42,9 +42,9 @@ Tt.aov <- function(vx, vtreat1,vtreat2=NULL,p.lim=0.05, Tuk.labs=TRUE)
         VarAov.t2 <- aov(vx~vtreat2)
     }    
     VarAnova <- anova(VarAov)
-    ## Writing stats (mean, sd and n)
     Tuk.t1=NULL
     Tuk.t2=NULL
+    ## Writing stats (mean, sd and n)
     if(missing(vtreat2))
     {
         p <- VarAnova$Pr[1]
@@ -62,15 +62,15 @@ Tt.aov <- function(vx, vtreat1,vtreat2=NULL,p.lim=0.05, Tuk.labs=TRUE)
                            FUN=function(x) c(mean=mean(x, na.rm=T),
                                              sd=sd(x,na.rm=T), n=length(x)))
         stats<-do.call(data.frame,stats)
-        stats$x.se <- stats$SD/sqrt(stats$n)
+        stats$x.se <- stats$x.sd/sqrt(stats$x.n)
         if (Tuk.int != 'No significant differences' && Tuk.labs==TRUE){
             stats <- merge(stats, Tuk.labels, by.x="Treats",
                          by.y="treatment1")
             stats=stats[order(stats$Treats),]
         }
-        if (length(names(stats))==4){
-            names(stats) <- c(treatment1,"Mean", "SD","n")}
-        else {names(stats) <- c(treatment1,"Mean", "SD","n","HSD")}
+        if (length(names(stats))==5){
+            names(stats) <- c(treatment1,"Mean", "SD","n","SE")}
+        else {names(stats) <- c(treatment1,"Mean", "SD","n","SE","Dif")}
     }
     else
     {
@@ -83,8 +83,8 @@ Tt.aov <- function(vx, vtreat1,vtreat2=NULL,p.lim=0.05, Tuk.labs=TRUE)
                 require(multcompView)
                 Tuk.levels <- Tuk.int[[paste("vtreat1","vtreat2",sep=":")]][,4]
                 Tuk.labels <- data.frame(multcompLetters(Tuk.levels)['Letters'])
-                Tuk.labels$treatment1 <- sapply(strsplit(row.names(Tukey.labels), ":"), "[",1)
-                Tuk.labels$treatment2 <- sapply(strsplit(row.names(Tukey.labels), ":"), "[",2)
+                Tuk.labels$treatment1 <- sapply(strsplit(row.names(Tuk.labels), ":"), "[",1)
+                Tuk.labels$treatment2 <- sapply(strsplit(row.names(Tuk.labels), ":"), "[",2)
             }
         }
         else{Tuk.int <- 'No significant differences for the interaction of treatments'}
@@ -97,16 +97,16 @@ Tt.aov <- function(vx, vtreat1,vtreat2=NULL,p.lim=0.05, Tuk.labs=TRUE)
                            FUN=function(x) c(mean=mean(x, na.rm=T),
                                              sd=sd(x, na.rm=T), n=length(x)))
         stats<-do.call(data.frame,stats)
-        stats$x.se <- stats$SD/sqrt(stats$n)
+        stats$x.se <- stats$x.sd/sqrt(stats$x.n)
         if (Tuk.int != 'No significant differences for the interaction of treatments'
             && Tuk.labs==TRUE){
             stats <- merge(stats, Tuk.labels, by.x=c("Treats1","Treats2"),
                          by.y=c("treatment1","treatment2"))
             stats=stats[order(stats$Treats1, stats$Treats2),]
         }
-        if (length(names(stats))==5){
-            names(stats) <- c(treatment1,treatment2,"Mean", "SD","n")}
-        else {names(stats) <- c(treatment1,treatment2,"Mean", "SD","n","HSD")}
+        if (length(names(stats))==6){
+            names(stats) <- c(treatment1,treatment2,"Mean", "SD","n","SE")}
+        else {names(stats) <- c(treatment1,treatment2,"Mean", "SD","n","SE","Dif")}
     }
     ## Output
     aov.output <- list(

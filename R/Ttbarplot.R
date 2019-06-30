@@ -4,7 +4,7 @@
 #' The object \emph{stats} obtained from the function \code{Tt.aov()} can be used directly.
 #' @param T1 name of the column containing the treatments
 #' @param T2 name of the column containing the treatments for 2-factors plot (optional)
-#' @param e.lines name of the column containing the data of the error lines to be plotted
+#' @param e.lines name of the column containing the data of the error lines to be plotted. Default is set "SE" for standard error created from function \code{Tt.aov}
 #' @param dif name of the column with the letters representing statistical differences
 #' @param dif.h distance from the uper error line to plot the \code{dif} letters
 #' 
@@ -18,7 +18,7 @@
 #' scale_fill_brewer(palette=3)+
 #' guides(fill=guide_legend(title='Treatment'))
 
-Tt.barplot <- function(aov.output, T1, T2=NULL, e.lines="SD",
+Tt.barplot <- function(aov.output, T1, T2=NULL, e.lines="SE",
                          dif=NULL, dif.h=0.5)
 {
     require(ggplot2)
